@@ -15,9 +15,10 @@ public class Main {
         me.firstName = "Adrian";
         me.lastName = "Warda";
         me.pet = dog;
-
+        me.car = new Car("somemodel", "somemanufacturer");
         me.pet.feed();
         System.out.println(me.pet.species);
+        System.out.println(me.car.model);
 
         me.pet = new Animal("Lion");
         me.pet.name = "Myszojeleń";
