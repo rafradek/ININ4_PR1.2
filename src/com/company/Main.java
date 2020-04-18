@@ -5,14 +5,14 @@ public class Main {
     public static void main(String[] args) {
 
         Animal dog = new Animal("Dog");
-        dog.name = "Haiko";
+        dog.name = "Szarik";
 
         System.out.println("Hi, I'm " + dog.name);
 
         dog.feed();
 
         Human me = new Human();
-        me.firstName = "Kacper";
+        me.firstName = "Adrian";
         me.lastName = "Warda";
         me.pet = dog;
 
