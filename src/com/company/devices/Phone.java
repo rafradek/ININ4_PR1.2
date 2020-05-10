@@ -36,11 +36,11 @@ public class Phone extends Device{
     }
 
     @Override
-    public void sell(Human seller, Human buyer, Double price) {
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
         if (seller.phone != this)
-            System.out.println("The seller does not own this phone");
+            throw new Exception("The seller does not own this phone");
         else if (buyer.cash < price)
-            System.out.println("come back when you're a little mmm richer");
+            throw new Exception("come back when you're a little mmm richer");
         else {
             seller.phone = null;
             buyer.phone = this;

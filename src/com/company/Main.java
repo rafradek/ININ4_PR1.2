@@ -46,14 +46,28 @@ public class Main {
         Human myWife = new Human();
         myWife.firstName = "Karolina";
         //myWife.setCar(new Car("somemodel","somemanufacturer",2010));
-        me.getCar().sell(me,myWife,10000.);
+        try {
+            me.getCar().sell(me,myWife,10000.);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         Phone nokia = new Phone("Nokia","3310",2019);
         nokia.turnOn();
         myWife.phone = nokia;
-        nokia.sell(myWife,me,1000.);
+        try {
+            nokia.sell(myWife,me,1000.);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         System.out.println(nokia.isPowered());
-        me.pet.sell(me,myWife,100.);
+        try {
+            me.pet.sell(me, myWife, 100.);
+        }
+            catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         myWife.sell(me,new Human(),1000.);
     }
 }

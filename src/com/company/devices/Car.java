@@ -17,11 +17,11 @@ public class Car extends Device {
     }
 
     @Override
-    public void sell(Human seller, Human buyer, Double price) {
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
         if (seller.getCar() != this)
-            System.out.println("The seller does not own this car");
+            throw new Exception("The seller does not own this car");
         else if (buyer.cash < price)
-            System.out.println("come back when you're a little mmm richer");
+            throw new Exception("come back when you're a little mmm richer");
         else {
             seller.setCar(null);
             buyer.setCar(this);
