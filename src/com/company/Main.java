@@ -13,7 +13,6 @@ public class Main {
         System.out.println("Hi, I'm " + dog.name);
 
         dog.feed();
-        dog.sell();
 
         Human me = new Human();
         me.firstName = "Adrian";
@@ -46,13 +45,15 @@ public class Main {
 
         Human myWife = new Human();
         myWife.firstName = "Karolina";
-        myWife.setCar(new Car("somemodel","somemanufacturer",2010));
-        myWife.sell();
+        //myWife.setCar(new Car("somemodel","somemanufacturer",2010));
+        me.getCar().sell(me,myWife,10000.);
 
         Phone nokia = new Phone("Nokia","3310",2019);
         nokia.turnOn();
-        nokia.sell();
         myWife.phone = nokia;
+        nokia.sell(myWife,me,1000.);
         System.out.println(nokia.isPowered());
+        me.pet.sell(me,myWife,100.);
+        myWife.sell(me,new Human(),1000.);
     }
 }

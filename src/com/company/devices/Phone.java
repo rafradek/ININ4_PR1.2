@@ -1,5 +1,6 @@
 package com.company.devices;
 
+import com.company.Human;
 import sun.rmi.server.InactiveGroupException;
 
 public class Phone extends Device{
@@ -32,5 +33,18 @@ public class Phone extends Device{
     @Override
     public boolean isPowered() {
         return this.turnedOn;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.phone != this)
+            System.out.println("The seller does not own this phone");
+        else if (buyer.cash < price)
+            System.out.println("come back when you're a little mmm richer");
+        seller.phone = null;
+        buyer.phone = this;
+        seller.cash += price;
+        buyer.cash -= price;
+        System.out.println("Sold this phone: "+this.toString());
     }
 }

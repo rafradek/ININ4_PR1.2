@@ -1,5 +1,7 @@
 package com.company.devices;
 
+import com.company.Human;
+
 public class Car extends Device {
     public String color;
     private Double price = 1000.;
@@ -12,6 +14,19 @@ public class Car extends Device {
 
     public Double getPrice() {
         return price;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.getCar() != this)
+            System.out.println("The seller does not own this car");
+        else if (buyer.cash < price)
+            System.out.println("come back when you're a little mmm richer");
+        seller.setCar(null);
+        buyer.setCar(this);
+        seller.cash += price;
+        buyer.cash -= price;
+        System.out.println("Sold this car: "+this.toString());
     }
 
     @Override

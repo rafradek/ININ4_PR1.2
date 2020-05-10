@@ -1,12 +1,12 @@
 package com.company.devices;
 
+import com.company.Human;
 import com.company.Saleable;
 
 public abstract class Device implements Saleable {
     private String producer;
     private String model;
     private Integer yearOfProduction;
-    private Double price;
 
     public Device(String producer, String model, Integer yearOfProduction) {
         setModel(model);
@@ -46,13 +46,4 @@ public abstract class Device implements Saleable {
 
     public abstract boolean isPowered();
 
-    @Override
-    public void sell() {
-        System.out.println("Sold this device: "+this.toString());
-    }
-
-    @Override
-    public Double getPrice() {
-        return price;
-    }
 }

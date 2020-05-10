@@ -6,10 +6,11 @@ import com.company.devices.Phone;
 public class Human extends Animal{
     String firstName;
     String lastName;
-    Phone phone;
+    public Phone phone;
     Animal pet;
     private Car car;
     private Double salary = 2000.;
+    public Double cash = 0.;
 
     public Human() {
         super("homo sapiens");
@@ -21,6 +22,10 @@ public class Human extends Animal{
     }
 
     public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public void buyCar(Car car) {
         if (this.salary > car.getPrice()){
             System.out.println("Gratulacje you bought it");
             this.car = car;
@@ -48,7 +53,7 @@ public class Human extends Animal{
         return firstName + " " + lastName + " " + car.toString();
     }
     @Override
-    public void sell() {
+    public void sell(Human seller, Human buyer, Double price) {
         System.out.println("Nope");
     }
 }

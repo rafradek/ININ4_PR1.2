@@ -13,7 +13,6 @@ public class Animal implements Edible, Saleable {
     static final Double LION_WEIGHT = 180.;
     static final Double DEFAULT_WEIGHT = 1.;
 
-    private Double price = 0.;
 
     public Animal(String species) {
         this.species = species;
@@ -54,12 +53,18 @@ public class Animal implements Edible, Saleable {
     }
 
     @Override
-    public void sell() {
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.pet != this)
+            System.out.println("The seller does not own this animal");
+        else if (buyer.cash < price)
+            System.out.println("come back when you're a little mmm richer");
+        seller.pet = null;
+        buyer.pet = this;
+        seller.cash += price;
+        buyer.cash -= price;
         System.out.println("Sold this animal: "+this.toString());
     }
-
-    @Override
-    public Double getPrice() {
-        return price;
+    public String toString() {
+        return species + " " + name;
     }
 }
