@@ -1,8 +1,9 @@
 package com.company;
 
 import java.io.File;
+import java.io.Serializable;
 
-public class Animal {
+public class Animal implements Edible, Saleable {
     final String species;
     String name;
     File pic;
@@ -11,6 +12,8 @@ public class Animal {
     static final Double DOG_WEIGHT = 10.;
     static final Double LION_WEIGHT = 180.;
     static final Double DEFAULT_WEIGHT = 1.;
+
+    private Double price = 0.;
 
     public Animal(String species) {
         this.species = species;
@@ -42,5 +45,21 @@ public class Animal {
             weight -= 0.1;
             System.out.println("Current weight " + weight);
         }
+    }
+
+    @Override
+    public void beEaten() {
+        weight = 0.0;
+        System.out.println("goodbye");
+    }
+
+    @Override
+    public void sell() {
+        System.out.println("Sold this animal: "+this.toString());
+    }
+
+    @Override
+    public Double getPrice() {
+        return price;
     }
 }

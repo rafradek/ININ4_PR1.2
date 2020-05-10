@@ -13,6 +13,7 @@ public class Main {
         System.out.println("Hi, I'm " + dog.name);
 
         dog.feed();
+        dog.sell();
 
         Human me = new Human();
         me.firstName = "Adrian";
@@ -42,14 +43,16 @@ public class Main {
         cat.feed();
         cat.feed();
 
+
         Human myWife = new Human();
         myWife.firstName = "Karolina";
         myWife.setCar(new Car("somemodel","somemanufacturer",2010));
+        myWife.sell();
 
         Phone nokia = new Phone("Nokia","3310",2019);
         nokia.turnOn();
+        nokia.sell();
         myWife.phone = nokia;
         System.out.println(nokia.isPowered());
-
     }
 }

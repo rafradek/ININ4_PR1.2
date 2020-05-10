@@ -47,4 +47,8 @@ public class Human extends Animal{
     public String toString() {
         return firstName + " " + lastName + " " + car.toString();
     }
+    @Override
+    public void sell() {
+        System.out.println("Nope");
+    }
 }
