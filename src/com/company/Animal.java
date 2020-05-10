@@ -58,11 +58,13 @@ public class Animal implements Edible, Saleable {
             System.out.println("The seller does not own this animal");
         else if (buyer.cash < price)
             System.out.println("come back when you're a little mmm richer");
-        seller.pet = null;
-        buyer.pet = this;
-        seller.cash += price;
-        buyer.cash -= price;
-        System.out.println("Sold this animal: "+this.toString());
+        else {
+            seller.pet = null;
+            buyer.pet = this;
+            seller.cash += price;
+            buyer.cash -= price;
+            System.out.println("Sold this animal: " + this.toString());
+        }
     }
     public String toString() {
         return species + " " + name;

@@ -22,11 +22,13 @@ public class Car extends Device {
             System.out.println("The seller does not own this car");
         else if (buyer.cash < price)
             System.out.println("come back when you're a little mmm richer");
-        seller.setCar(null);
-        buyer.setCar(this);
-        seller.cash += price;
-        buyer.cash -= price;
-        System.out.println("Sold this car: "+this.toString());
+        else {
+            seller.setCar(null);
+            buyer.setCar(this);
+            seller.cash += price;
+            buyer.cash -= price;
+            System.out.println("Sold this car: " + this.toString());
+        }
     }
 
     @Override

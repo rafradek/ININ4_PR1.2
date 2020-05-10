@@ -41,10 +41,12 @@ public class Phone extends Device{
             System.out.println("The seller does not own this phone");
         else if (buyer.cash < price)
             System.out.println("come back when you're a little mmm richer");
-        seller.phone = null;
-        buyer.phone = this;
-        seller.cash += price;
-        buyer.cash -= price;
-        System.out.println("Sold this phone: "+this.toString());
+        else {
+            seller.phone = null;
+            buyer.phone = this;
+            seller.cash += price;
+            buyer.cash -= price;
+            System.out.println("Sold this phone: " + this.toString());
+        }
     }
 }
