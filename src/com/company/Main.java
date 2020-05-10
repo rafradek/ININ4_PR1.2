@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.devices.Car;
+import com.company.devices.Phone;
 
 public class Main {
 
@@ -17,11 +18,13 @@ public class Main {
         me.firstName = "Adrian";
         me.lastName = "Warda";
         me.pet = dog;
-        me.setCar(new Car("somemodel", "somemanufacturer"));
+        me.setCar(new Car("somemodel", "somemanufacturer",2010));
         me.getCar().color = "gray";
+        me.getCar().turnOn();
         me.pet.feed();
         System.out.println(me.pet.species);
-        System.out.println(me.getCar().model);
+        System.out.println(me.getCar().getModel());
+        System.out.println(me.getCar().isPowered());
         me.pet = new Animal("Lion");
         me.pet.name = "Myszojeleń";
 
@@ -41,6 +44,12 @@ public class Main {
 
         Human myWife = new Human();
         myWife.firstName = "Karolina";
-        myWife.setCar(new Car("somemodel","somemanufacturer"));
+        myWife.setCar(new Car("somemodel","somemanufacturer",2010));
+
+        Phone nokia = new Phone("Nokia","3310",2019);
+        nokia.turnOn();
+        myWife.phone = nokia;
+        System.out.println(nokia.isPowered());
+
     }
 }
