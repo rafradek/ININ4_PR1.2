@@ -6,7 +6,7 @@ public class Phone extends Device{
 
     private Double screenSize;
 
-    private Boolean turnedOn;
+    private Boolean turnedOn = false;
 
     public Phone(String producer, String model, Integer yearOfProduction) {
         super(producer, model, yearOfProduction);

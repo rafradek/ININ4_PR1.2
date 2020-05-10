@@ -4,7 +4,7 @@ public class Car extends Device {
     public String color;
     private Double price = 1000.;
     private Double millage;
-    private boolean turnedOn;
+    private boolean turnedOn = false;
 
     public Car(String model, String producent, Integer yearOfProduction){
         super(model,producent, yearOfProduction);
