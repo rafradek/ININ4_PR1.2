@@ -4,8 +4,7 @@ import com.company.creatures.Animal;
 import com.company.creatures.FarmAnimal;
 import com.company.creatures.Human;
 import com.company.creatures.Pet;
-import com.company.devices.Car;
-import com.company.devices.Phone;
+import com.company.devices.*;
 
 public class Main {
 
@@ -22,9 +21,12 @@ public class Main {
         me.firstName = "Adrian";
         me.lastName = "Warda";
         me.pet = dog;
-        me.setCar(new Car("somemodel", "somemanufacturer",2010));
+        me.setCar(new CarLPG("somemodel", "somemanufacturer",2010));
         me.getCar().color = "gray";
         me.getCar().turnOn();
+        me.getCar().refuel();
+        me.getCar().turnOn();
+
         me.pet.feed();
         System.out.println(me.pet.species);
         System.out.println(me.getCar().getModel());
@@ -57,6 +59,8 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        me.setCar(new CarElectric("Electric", "Car", 2020));
+        me.getCar().refuel();
 
         Phone nokia = new Phone("Nokia","3310",2019);
         nokia.turnOn();
@@ -75,6 +79,14 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        myWife.sell(me,new Human(),1000.);
+        me.sell(myWife,new Human(),1000.);
+
+        try {
+            me.getCar().sell(me, new Human(), 1.);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        me.setCar(new CarDiesel("Diesel", "Car", 2020));
+        me.getCar().refuel();
     }
 }

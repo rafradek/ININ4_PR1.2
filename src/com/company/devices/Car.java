@@ -2,7 +2,7 @@ package com.company.devices;
 
 import com.company.creatures.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     public String color;
     private Double price = 1000.;
     private Double millage;
@@ -38,6 +38,10 @@ public class Car extends Device {
             System.out.println("already turned on");
             return;
         }
+        else if (this.getFuel() < 0) {
+            System.out.println("Empty fuel tank, cannot turn on");
+            return;
+        }
         turnedOn = true;
     }
 
@@ -45,4 +49,8 @@ public class Car extends Device {
     public boolean isPowered() {
         return turnedOn;
     }
+
+    public abstract void refuel();
+
+    public abstract Double getFuel();
 }
