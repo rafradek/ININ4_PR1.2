@@ -1,12 +1,13 @@
-package com.company;
+package com.company.creatures;
+
+import com.company.Saleable;
 
 import java.io.File;
-import java.io.Serializable;
 
-public class Animal implements Edible, Saleable {
-    final String species;
-    String name;
-    File pic;
+public abstract class Animal implements Saleable, Feedable {
+    public final String species;
+    public String name;
+    public File pic;
     protected Double weight;
 
     static final Double DOG_WEIGHT = 10.;
@@ -26,7 +27,8 @@ public class Animal implements Edible, Saleable {
 
     }
 
-    void feed() {
+    @Override
+    public void feed() {
         if (weight <= 0.){
             System.out.println("The "+ species +" is dead");
         }
@@ -36,7 +38,18 @@ public class Animal implements Edible, Saleable {
         }
     }
 
-    void takeForAWalk() {
+    @Override
+    public void feed(Double foodWeight) {
+        if (weight <= 0.){
+            System.out.println("The "+ species +" is dead");
+        }
+        else {
+            weight += foodWeight;
+            System.out.println("Thx bro, my weight is now " + weight);
+        }
+    }
+
+    public void takeForAWalk() {
         if (weight <= 0.){
             System.out.println("The "+ species +" is dead");
         }
@@ -44,12 +57,6 @@ public class Animal implements Edible, Saleable {
             weight -= 0.1;
             System.out.println("Current weight " + weight);
         }
-    }
-
-    @Override
-    public void beEaten() {
-        weight = 0.0;
-        System.out.println("goodbye");
     }
 
     @Override

@@ -1,16 +1,17 @@
-package com.company;
+package com.company.creatures;
 
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
-public class Human extends Animal{
-    String firstName;
-    String lastName;
+public class Human extends Animal {
+    public String firstName;
+    public String lastName;
     public Phone phone;
-    Animal pet;
+    public Animal pet;
+    public FarmAnimal farmAnimal;
     private Car car;
     private Double salary = 2000.;
-    public Double cash = 0.;
+    public Double cash = 1000.;
 
     public Human() {
         super("homo sapiens");

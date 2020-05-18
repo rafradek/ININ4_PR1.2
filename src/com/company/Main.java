@@ -1,5 +1,9 @@
 package com.company;
 
+import com.company.creatures.Animal;
+import com.company.creatures.FarmAnimal;
+import com.company.creatures.Human;
+import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
@@ -7,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Animal dog = new Animal("Dog");
+        Animal dog = new Pet("Dog");
         dog.name = "Szarik";
 
         System.out.println("Hi, I'm " + dog.name);
@@ -25,16 +29,18 @@ public class Main {
         System.out.println(me.pet.species);
         System.out.println(me.getCar().getModel());
         System.out.println(me.getCar().isPowered());
-        me.pet = new Animal("Lion");
-        me.pet.name = "Myszojeleń";
+        me.farmAnimal = new FarmAnimal("Lion");
+        me.farmAnimal.name = "Myszojeleń";
 
-        me.pet.feed();
+        me.farmAnimal.feed();
+        me.farmAnimal.feed(444.);
+        me.farmAnimal.beEaten();
 
         System.out.println(me.species);
 
         System.out.println(me.pet.species);
 
-        Animal cat = new Animal("cat");
+        Animal cat = new Pet("cat");
         cat.feed();
         for (int i =0 ; i < 13; i++ ){
             cat.takeForAWalk();
@@ -57,6 +63,7 @@ public class Main {
         myWife.phone = nokia;
         try {
             nokia.sell(myWife,me,1000.);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

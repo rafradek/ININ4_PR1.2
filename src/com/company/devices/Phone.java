@@ -1,10 +1,15 @@
 package com.company.devices;
 
-import com.company.Human;
-import sun.rmi.server.InactiveGroupException;
+import com.company.creatures.Human;
+
+import java.net.URL;
+import java.util.List;
 
 public class Phone extends Device{
 
+    private static final String DEFAULT_VERSION = "1.0";
+    private static final String DEFAULT_URL = "localhost";
+    private static final String DEFAULT_PROTOCOL = "https://";
     private Double screenSize;
 
     private Boolean turnedOn = false;
@@ -48,5 +53,29 @@ public class Phone extends Device{
             buyer.cash -= price;
             System.out.println("Sold this phone: " + this.toString());
         }
+    }
+
+    public void installAnApp(String name) {
+        installAnApp(name, DEFAULT_VERSION);
+    }
+
+    public void installAnApp(String name, String version) {
+        installAnApp(name, DEFAULT_VERSION, DEFAULT_PROTOCOL+ DEFAULT_URL);
+
+    }
+
+    public void installAnApp(String name, String version, String url) {
+
+    }
+
+    public void installAnApp(List<String> names) {
+        for (String name:
+             names) {
+            installAnApp(name);
+        }
+    }
+
+    public void installAnApp(URL url) {
+        installAnApp(url);
     }
 }

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.creatures;
 
 public interface Edible {
     public void beEaten();

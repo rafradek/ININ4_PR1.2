@@ -1,6 +1,6 @@
 package com.company.devices;
 
-import com.company.Human;
+import com.company.creatures.Human;
 
 public class Car extends Device {
     public String color;
@@ -18,6 +18,7 @@ public class Car extends Device {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) throws Exception {
+        System.out.println(" buyer cash: "+ buyer.cash + " seller cash: " + seller.cash);
         if (seller.getCar() != this)
             throw new Exception("The seller does not own this car");
         else if (buyer.cash < price)
@@ -27,7 +28,7 @@ public class Car extends Device {
             buyer.setCar(this);
             seller.cash += price;
             buyer.cash -= price;
-            System.out.println("Sold this car: " + this.toString());
+            System.out.println("Sold this car: " + this.toString() + " buyer cash: "+ buyer.cash + " seller cash: " + seller.cash);
         }
     }
 
