@@ -6,6 +6,7 @@ public abstract class Device implements Saleable {
     private String producer;
     private String model;
     private Integer yearOfProduction;
+    public Double value = 0.0;
 
     public Device(String producer, String model, Integer yearOfProduction) {
         setModel(model);
@@ -30,7 +31,7 @@ public abstract class Device implements Saleable {
     }
 
     public String toString() {
-        return producer + " " + model + " " + yearOfProduction;
+        return producer + " " + model + " " + yearOfProduction + " "+ value;
     }
 
     public Integer getYearOfProduction() {

@@ -21,16 +21,16 @@ public class Main {
         me.firstName = "Adrian";
         me.lastName = "Warda";
         me.pet = dog;
-        me.setCar(new CarLPG("somemodel", "somemanufacturer",2010));
-        me.getCar().color = "gray";
-        me.getCar().turnOn();
-        me.getCar().refuel();
-        me.getCar().turnOn();
+        me.setCar(new CarLPG("somemodel", "somemanufacturer",2010),0);
+        me.getCar(0).color = "gray";
+        me.getCar(0).turnOn();
+        me.getCar(0).refuel();
+        me.getCar(0).turnOn();
 
         me.pet.feed();
         System.out.println(me.pet.species);
-        System.out.println(me.getCar().getModel());
-        System.out.println(me.getCar().isPowered());
+        System.out.println(me.getCar(0).getModel());
+        System.out.println(me.getCar(0).isPowered());
         me.farmAnimal = new FarmAnimal("Lion");
         me.farmAnimal.name = "Myszojeleń";
 
@@ -55,12 +55,16 @@ public class Main {
         myWife.firstName = "Karolina";
         //myWife.setCar(new Car("somemodel","somemanufacturer",2010));
         try {
-            me.getCar().sell(me,myWife,10000.);
+            me.getCar(0).sell(me,myWife,10000.);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        me.setCar(new CarElectric("Electric", "Car", 2020));
-        me.getCar().refuel();
+        me.setCar(new CarElectric("Electric", "Car", 2020),0);
+        me.getCar(0).value = 1000.0;
+        me.getCar(0).refuel();
+        me.setCar(new CarElectric("Electric2", "Car", 2019),1);
+        me.getCar(1).value = 2000.0;
+        me.getCar(1).refuel();
 
         Phone nokia = new Phone("Nokia","3310",2019);
         nokia.turnOn();
@@ -82,11 +86,23 @@ public class Main {
         me.sell(myWife,new Human(),1000.);
 
         try {
-            me.getCar().sell(me, new Human(), 1.);
+            me.getCar(0).sell(me, new Human(), 1.);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        me.setCar(new CarDiesel("Diesel", "Car", 2020));
-        me.getCar().refuel();
+        me.setCar(new CarDiesel("Diesel", "Car", 2020),0);
+        me.getCar(0).value = 1000.0;
+        me.getCar(0).refuel();
+        me.sortCars();
+        me.printCarList();
+        myWife.printCarList();
+    }
+
+    public static int find(Object[] array, Object object) {
+        for (int i = 0; i < array.length; i++) {
+            if (object == array[i])
+                return i;
+        }
+        return -1;
     }
 }
