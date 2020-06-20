@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Human extends Animal {
     public String firstName;
     public String lastName;
-    public Phone phone;
+    private Phone phone;
     public Animal pet;
     public FarmAnimal farmAnimal;
     public Car[] garage;
@@ -105,5 +105,14 @@ public class Human extends Animal {
     @Override
     public void sell(Human seller, Human buyer, Double price) {
         System.out.println("Nope");
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+        phone.setOwner(this);
     }
 }

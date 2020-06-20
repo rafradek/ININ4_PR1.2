@@ -60,6 +60,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
         Car oldElectric = new CarElectric("Electric", "Car", 2020);
+
         oldElectric.value = 1000.0;
         me.setCar(oldElectric,0);
         oldElectric.refuel();
@@ -69,13 +70,29 @@ public class Main {
 
         Phone nokia = new Phone("Nokia","3310",2019);
         nokia.turnOn();
-        myWife.phone = nokia;
+        myWife.setPhone(nokia);
         try {
             nokia.sell(myWife,me,1000.);
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        Application app1 = new Application("Poczta","1.0",100.0);
+        Application app2 = new Application("Internet","1.2",0.0);
+        Application app3 = new Application("Pasjans","1.4",0.0);
+        Application app4 = new Application("Zegar","1.0",25.0);
+        nokia.installApp(app1);
+        nokia.installApp(app2);
+        nokia.installApp(app3);
+        nokia.installApp(app4);
+
+        System.out.println("Poczta zainstalowana " + nokia.isInstalled("Poczta"));
+        System.out.println("Internet zainstalowany " + nokia.isInstalled(app2));
+        nokia.printFreeApps();
+
+        nokia.printAllAppsSortByName();
+        nokia.printAllAppsSortByPrice();
+
+        System.out.println("Ilość aplikacji: "+ nokia.getTotalAppsValue());
         System.out.println(nokia.isPowered());
         try {
             me.pet.sell(me, myWife, 100.);
