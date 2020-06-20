@@ -33,6 +33,8 @@ public class Human extends Animal {
 
     public void setCar(Car car, int pos) {
         this.garage[pos] = car;
+        if (car != null && car.owners.size() == 0)
+            car.owners.add(this);
     }
 
     public void printCarList() {

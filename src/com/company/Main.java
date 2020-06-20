@@ -59,9 +59,10 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        me.setCar(new CarElectric("Electric", "Car", 2020),0);
-        me.getCar(0).value = 1000.0;
-        me.getCar(0).refuel();
+        Car oldElectric = new CarElectric("Electric", "Car", 2020);
+        oldElectric.value = 1000.0;
+        me.setCar(oldElectric,0);
+        oldElectric.refuel();
         me.setCar(new CarElectric("Electric2", "Car", 2019),1);
         me.getCar(1).value = 2000.0;
         me.getCar(1).refuel();
@@ -84,12 +85,17 @@ public class Main {
         }
 
         me.sell(myWife,new Human(),1000.);
-
+        Human distantHuman = new Human();
         try {
-            me.getCar(0).sell(me, new Human(), 1.);
+            me.getCar(0).sell(me, distantHuman, 1.);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println("Sprzedałem samochód ludziowi: "+oldElectric.checkTransaction(distantHuman, me));
+        System.out.println("transakcje: "+oldElectric.getTransactionCount());
+        System.out.println("ma właściciela: "+oldElectric.hasOwner());
+
         me.setCar(new CarDiesel("Diesel", "Car", 2020),0);
         me.getCar(0).value = 1000.0;
         me.getCar(0).refuel();

@@ -3,12 +3,16 @@ package com.company.devices;
 import com.company.Main;
 import com.company.creatures.Human;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public abstract class Car extends Device {
     public String color;
     private Double millage;
     private boolean turnedOn = false;
+
+    public List<Human> owners = new ArrayList<>();
 
     public Car(String model, String producent, Integer yearOfProduction){
         super(model,producent, yearOfProduction);
@@ -19,7 +23,7 @@ public abstract class Car extends Device {
         System.out.println(" buyer cash: "+ buyer.cash + " seller cash: " + seller.cash);
         int sellerSlot = Main.find(seller.garage, this);
         int buyerSlot = buyer.getFirstFreeSlotInGarage();
-        if (sellerSlot < 0)
+        if (sellerSlot < 0 || this.owners.get(this.owners.size()-1) != seller)
             throw new Exception("The seller does not own this car");
         else if (buyer.getFirstFreeSlotInGarage() < 0)
             throw new Exception("No free space in garage");
@@ -28,10 +32,28 @@ public abstract class Car extends Device {
         else {
             seller.setCar(null, sellerSlot);
             buyer.setCar(this, buyerSlot);
+            this.owners.add(buyer);
             seller.cash += price;
             buyer.cash -= price;
             System.out.println("Sold this car: " + this.toString() + " buyer cash: "+ buyer.cash + " seller cash: " + seller.cash);
         }
+    }
+
+    public boolean hasOwner() {
+        return this.owners.size() > 0;
+    }
+
+    public boolean checkTransaction(Human buyer, Human seller) {
+        for (int i = 1; i < this.owners.size(); i++) {
+            if (this.owners.get(i) == buyer && this.owners.get(i-1) == seller) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Integer getTransactionCount() {
+        return this.owners.size()-1;
     }
 
     @Override
